@@ -7,286 +7,657 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Noto+Sans:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500&family=Noto+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <style>
+      :root {
+        --bg: #f2f0ec;
+        --ink: #111111;
+        --muted: #888880;
+        --faint: #d4d2cc;
+        --line: rgba(17, 17, 17, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "DM Sans", "Noto Sans", sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: var(--ink);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 48px;
+        height: 56px;
+      }
+
+      .topbar-brand {
+        font-size: 0.92rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #fff;
+      }
+
+      .topbar-links {
+        display: flex;
+        gap: 32px;
+      }
+
+      .topbar-links a {
+        font-size: 0.88rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #555;
+        transition: color 160ms;
+      }
+
+      .topbar-links a:hover,
+      .topbar-links a.active {
+        color: #fff;
+      }
+
+      .lang-switcher {
+        display: flex;
+        gap: 16px;
+        margin-left: auto;
+      }
+
+      .lang-switcher a {
+        font-size: 0.88rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #555;
+        transition: color 160ms;
+        padding: 0 8px;
+      }
+
+      .lang-switcher a.active {
+        color: #fff;
+      }
+
+      .lang-switcher a:hover {
+        color: #fff;
+      }
+
+      .hero {
+        background: var(--bg);
+        padding: 64px 48px 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-photo {
+        width: 156px;
+        height: 156px;
+        border-radius: 999px;
+        overflow: hidden;
+        margin-bottom: 28px;
+        border: 1px solid var(--faint);
+      }
+
+      .hero-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 22%;
+        display: block;
+      }
+
+      .hero-name {
+        font-size: clamp(2rem, 3.2vw, 2.7rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1;
+        color: var(--ink);
+        margin-bottom: 18px;
+      }
+
+      .hero-role {
+        font-size: 1.02rem;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+        font-weight: 500;
+        margin-bottom: 20px;
+      }
+
+      .hero-intro {
+        font-size: 0.95rem;
+        color: var(--muted);
+        font-weight: 400;
+        line-height: 1.55;
+        margin-bottom: 24px;
+      }
+
+      .hero-divider {
+        width: 40px;
+        height: 1px;
+        background: var(--faint);
+        margin-bottom: 20px;
+      }
+
+      .hero-sub {
+        font-size: 1rem;
+        color: var(--muted);
+        line-height: 1.8;
+        font-weight: 400;
+        margin-bottom: 12px;
+        white-space: nowrap;
+        letter-spacing: 0.04em;
+      }
+
+      .hero-contact {
+        font-size: 0.92rem;
+        color: var(--muted);
+        line-height: 1.8;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+      }
+
+      .hero-contact a:hover {
+        color: var(--ink);
+      }
+
+      .shell {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 48px 96px;
+      }
+
+      .section {
+        padding: 64px 0;
+        border-top: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 32px;
+        scroll-margin-top: 56px;
+        opacity: 1;
+        transform: none;
+        transition: opacity 600ms ease, transform 600ms ease;
+      }
+
+      .section.will-animate {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      .section.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      .section-label {
+        padding-top: 4px;
+      }
+
+      .section-label h2 {
+        font-size: 1.4rem;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+      }
+
+      .section-body {
+        min-width: 0;
+      }
+
+      .tl-item {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 20px;
+        padding: 40px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .tl-item:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+
+      .tl-item:last-child {
+        padding-bottom: 0;
+      }
+
+      .tl-period {
+        font-size: 0.8rem;
+        color: var(--muted);
+        line-height: 1.5;
+        font-weight: 400;
+        padding-top: 2px;
+      }
+
+      .tl-body h3 {
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 6px;
+        letter-spacing: -0.01em;
+      }
+
+      .tl-body p {
+        font-size: 0.9rem;
+        color: var(--muted);
+        line-height: 1.75;
+        font-weight: 400;
+      }
+
+      .detail-list {
+        margin: 8px 0 0 1.1em;
+        padding: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 400;
+        line-height: 1.85;
+      }
+
+      .subrole {
+        margin-top: 10px;
+        font-weight: 500;
+        color: var(--ink);
+        font-size: 0.88rem;
+      }
+
+      .meta-inline {
+        font-weight: 400;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      #publications .tl-body h3 {
+        cursor: pointer;
+      }
+
+      .publication-link {
+        cursor: pointer;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        padding-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        color: var(--faint);
+        font-weight: 400;
+      }
+
+      @media (max-width: 860px) {
+        .topbar {
+          padding: 0 24px;
+        }
+
+        .topbar-links {
+          gap: 20px;
+        }
+
+        .lang-switcher {
+          margin-left: 0;
+        }
+
+        .hero {
+          padding: 48px 24px 44px;
+        }
+
+        .hero-sub {
+          white-space: normal;
+        }
+
+        .shell {
+          padding: 0 24px 72px;
+        }
+
+        .section {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .tl-item {
+          grid-template-columns: 80px 1fr;
+          gap: 14px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .topbar-links {
+          display: none;
+        }
+
+        .lang-switcher {
+          display: none;
+        }
+
+        .hero-sub {
+          white-space: normal;
+        }
+      }
+    </style>
   </head>
   <body>
-    <main class="page-shell">
-      <div class="hero reveal">
-        <div class="hero-orb hero-orb-a"></div>
-        <div class="hero-orb hero-orb-b"></div>
-        
-        <div class="topbar">
-          <span class="brand">Chaewon Heo</span>
-          <nav class="nav-links">
-            <a href="#education">Education</a>
-            <a href="#publications">Publications</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#awards">Awards</a>
-            <a href="#skills">Skills</a>
-          </nav>
-          <div class="lang-switcher">
-            <a href="/chaewonheo-portfolio/index.html">한국어</a>
-            <a href="#" class="active">English</a>
-          </div>
-        </div>
-
-        <div class="hero-content">
-          <div class="hero-copy">
-            <div class="profile-ring">
-              <div class="profile-photo">
-                <img src="me.png" alt="Chaewon Heo" />
-              </div>
-            </div>
-            <h1>Chaewon Heo</h1>
-            <p class="headline">Data Science Researcher | LLM Engineer</p>
-            <p class="subheadline">
-              I love understanding problems with data and building AI systems to solve them.<br />
-              I'm fascinated by how context extracted from data flows into models and pipelines.
-            </p>
-            <div class="tag-list">
-              <span>Large Language Models</span>
-              <span>Conversational AI</span>
-              <span>LLM Evaluation & Alignment</span>
-              <span>AI Agents</span>
-            </div>
-            <div class="contact-strip">
-              <a href="mailto:heorshey99@gmail.com">heorshey99@gmail.com</a>
-              <span>|</span>
-              <span>+82 10-8476-0626</span>
-            </div>
-          </div>
-        </div>
+    <nav class="topbar">
+      <span class="topbar-brand">Chaewon Heo</span>
+      <div class="topbar-links">
+        <a href="#education">Education</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#awards">Awards</a>
+        <a href="#skills">Skills</a>
       </div>
+      <div class="lang-switcher">
+        <a href="../chaewonheo-portfolio/index.html">한국어</a>
+        <a href="#" class="active">English</a>
+      </div>
+    </nav>
 
-      <div class="content">
-        <!-- Education Section -->
-        <section id="education" class="panel reveal">
-          <div class="section-heading">
-            <h2>Education</h2>
-          </div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <p class="item-period">2024.03 – 2026.08</p>
+    <div class="hero" id="top">
+      <div class="hero-photo">
+        <img src="me.png" alt="Chaewon Heo Profile" />
+      </div>
+      <h1 class="hero-name">Chaewon Heo</h1>
+      <p class="hero-role">Data Science Researcher | LLM Engineer</p>
+      <p class="hero-intro">
+        I love understanding problems with data and building AI systems to solve them.<br />
+        I'm fascinated by how context from data flows into models and pipelines.
+      </p>
+      <div class="hero-divider"></div>
+      <p class="hero-sub">
+        Large Language Models | Conversational AI | LLM Evaluation &amp; Alignment | AI Agents
+      </p>
+      <div class="hero-contact">
+        <a href="mailto:heorshey99@gmail.com">heorshey99@gmail.com</a> &nbsp;|&nbsp;
+        <span>+82 10-8476-0626</span>
+      </div>
+    </div>
+
+    <div class="shell">
+      <section id="education" class="section">
+        <div class="section-label"><h2>Education</h2></div>
+        <div class="section-body">
+          <div class="tl-item">
+            <p class="tl-period">2024.03 –<br />2026.08</p>
+            <div class="tl-body">
               <h3>Seoul National University Graduate School of Data Science</h3>
-              <p>M.S. in Data Science</p>
-              <p>Advisor: Yohan Jo | GPA 3.84 / 4.3 (95.4 / 100)</p>
+              <p>M.S. in Data Science &nbsp;|&nbsp; Advisor: Yohan Jo<br />GPA 3.84 / 4.3 &nbsp;(95.4 / 100)</p>
             </div>
-            <div class="timeline-item">
-              <p class="item-period">2018.03 – 2024.02</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-period">2018.03 –<br />2024.02</p>
+            <div class="tl-body">
               <h3>Sogang University</h3>
-              <p>B.A. in Psychology, Cultural Information Management</p>
-              <p>GPA 4.03 / 4.3 (97.9 / 100)</p>
+              <p>B.A. in Psychology, Cultural Information Management<br />GPA 4.03 / 4.3 &nbsp;(97.9 / 100)</p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Publications Section -->
-        <section id="publications" class="panel reveal">
-          <div class="section-heading">
-            <h2>Publications</h2>
-          </div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <p class="item-period">Accepted at<br />ACL 2026 Findings</p>
+      <section id="publications" class="section">
+        <div class="section-label"><h2>Publications</h2></div>
+        <div class="section-body">
+          <div class="tl-item">
+            <p class="tl-period">Accepted at<br />ACL 2026 Findings</p>
+            <div class="tl-body">
               <h3>
                 <a
+                  class="publication-link"
                   href="https://arxiv.org/pdf/2601.07698"
                   target="_blank"
                   rel="noreferrer"
-                  style="text-decoration: underline; text-underline-offset: 3px;"
+                  style="color: inherit; text-decoration: underline; text-underline-offset: 3px;"
                 >
                   Emotional Support Evaluation Framework via Controllable and Diverse Seeker Simulator
                 </a>
               </h3>
               <p style="margin-bottom: 8px;">Chaewon Heo, Cheyon Jin, Yohan Jo</p>
-              <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
-                <li>Built automated evaluation framework for counseling LLMs using user simulator to address lack of evaluation systems</li>
-                <li>Established systematic framework of 9 psychological & linguistic features for user characterization</li>
-                <li>Developed automatic feature tagging pipeline using OpenAI API (achieved 80% tagging accuracy compared to human annotation)</li>
+              <ul class="detail-list">
+                <li>Developed automated evaluation framework for counseling LLMs using user simulator to address lack of evaluation systems</li>
+                <li>Established systematic framework of 9 psychological &amp; linguistic features for user characterization</li>
+                <li>Built automatic feature tagging pipeline using OpenAI API achieving 80% tagging accuracy vs. human annotation</li>
                 <li>Constructed end-to-end simulator evaluation pipeline: conversation generation → feature re-tagging → F1-based accuracy measurement</li>
-                <li>Designed Mixture-of-Experts based simulator for improved profile reproduction (performance improvement across all features vs. SFT baseline)</li>
+                <li>Designed Mixture-of-Experts based simulator for improved profile reproduction with performance gains across all features vs. SFT baseline</li>
               </ul>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="panel reveal">
-          <div class="section-heading">
-            <h2>Experience</h2>
-          </div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <p class="item-period">2024.01 – 2024.03,<br />2024.07 – 2024.08</p>
-              <h3>Desilo</h3>
-              <p class="card-meta">Business Analytics Team · Seoul</p>
-              <div style="margin-top: 12px;">
-                <p style="font-weight: 500; margin-bottom: 6px;">Data Analysis & Prospective Customer Data Utilization Scenarios</p>
-                <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
-                  <li>Direct aggregation and analysis of financial and business data using SQL</li>
-                  <li>Created customized data utilization scenarios by prospective customer type (government, local government, research institutions)</li>
-                  <li>Synthesized analysis results into narrative stories and created sales proposals tailored to customer segments</li>
-                </ul>
-              </div>
-              <div style="margin-top: 14px;">
-                <p style="font-weight: 500; margin-bottom: 6px;">Dashboard Database Construction for Investment Client Analysis</p>
-                <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
-                  <li>Defined dashboard metrics based on analytical objectives</li>
-                  <li>Identified MyData sources and designed indicator-to-data mapping and schema</li>
-                  <li>Built SQL-based Snowflake tables and implemented metric aggregation</li>
-                </ul>
-              </div>
+      <section id="experience" class="section">
+        <div class="section-label"><h2>Experience</h2></div>
+        <div class="section-body">
+          <div class="tl-item">
+            <p class="tl-period">2024.01 – 2024.03,<br />2024.07 – 2024.08</p>
+            <div class="tl-body">
+              <h3>Desilo &nbsp;<span class="meta-inline">Business Analytics Team · Seoul</span></h3>
+              <p class="subrole">Data Analysis &amp; Prospective Customer Data Utilization Scenarios</p>
+              <ul class="detail-list">
+                <li>Direct aggregation and analysis of financial and business data using SQL</li>
+                <li>Created data utilization scenarios customized by prospective customer type (government, local government, research institutions)</li>
+                <li>Synthesized analysis results into coherent narratives and produced sales proposals tailored to customer segments</li>
+              </ul>
+              <p class="subrole">Dashboard Database Construction for Investment Client Analysis</p>
+              <ul class="detail-list">
+                <li>Defined dashboard metrics based on analytical objectives</li>
+                <li>Identified MyData sources and designed indicator-to-data mapping and schema</li>
+                <li>Built SQL-based Snowflake tables and implemented metric aggregation</li>
+              </ul>
             </div>
-            <div class="timeline-item">
-              <p class="item-period">2023.06 – 2023.07</p>
-              <h3>VIP Lab</h3>
-              <p class="card-meta">Google ExploreCSR Program · Seoul National University</p>
-              <ul style="margin: 12px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+          </div>
+          <div class="tl-item">
+            <p class="tl-period">2023.06 –<br />2023.07</p>
+            <div class="tl-body">
+              <h3>VIP Lab &nbsp;<span class="meta-inline">Google ExploreCSR Program · Seoul National University</span></h3>
+              <ul class="detail-list">
                 <li>Research support for content-based sequential recommender systems</li>
               </ul>
             </div>
-            <div class="timeline-item">
-              <p class="item-period">2021.03 – 2022.02</p>
-              <h3>Insight</h3>
-              <p class="card-meta">Sogang University Data Science Club</p>
-              <ul style="margin: 12px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+          </div>
+          <div class="tl-item">
+            <p class="tl-period">2021.03 –<br />2022.02</p>
+            <div class="tl-body">
+              <h3>Insight &nbsp;<span class="meta-inline">Sogang University Data Science Club</span></h3>
+              <ul class="detail-list">
                 <li>Executed full project lifecycle from data collection and preprocessing through ML modeling and insight generation</li>
                 <li>Worked with diverse data types including text, numerical, image, and spatial data</li>
               </ul>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="panel reveal">
-          <div class="section-heading">
-            <h2>Projects</h2>
-          </div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <p class="item-period">2025.09 – 2025.12</p>
+      <section id="projects" class="section">
+        <div class="section-label"><h2>Projects</h2></div>
+        <div class="section-body">
+          <div class="tl-item">
+            <p class="tl-period">2025.09 –<br />2025.12</p>
+            <div class="tl-body">
               <h3>LLM Agent-Based Automated Startup Evaluation Report Generation System</h3>
-              <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+              <ul class="detail-list">
                 <li>Designed Planner-Executor structured LLM agent framework and implemented iterative refinement pipeline</li>
                 <li>Implemented context-aware information retrieval using ChromaDB and FAISS-based RAG integration</li>
                 <li>Achieved stable report generation through adaptive query strategies</li>
               </ul>
             </div>
-            <div class="timeline-item">
-              <p class="item-period">2024.09 – 2024.12</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-period">2024.09 –<br />2024.12</p>
+            <div class="tl-body">
               <h3>Analyzing Performance Bottlenecks and Data Augmentation for Emotional Support LLM</h3>
-              <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+              <ul class="detail-list">
                 <li>Detected performance degradation patterns through metric-based automated evaluation of LLM-generated conversations</li>
                 <li>Achieved full-dataset-level performance with just 17% of data through Active Learning and synthetic data generation</li>
               </ul>
             </div>
-            <div class="timeline-item">
-              <p class="item-period">2023.03 – 2023.06</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-period">2023.03 –<br />2023.06</p>
+            <div class="tl-body">
               <h3>Vision-Based Study Time Tracking Service</h3>
-              <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+              <ul class="detail-list">
                 <li>Collected and labeled custom video dataset from YouTube covering diverse poses and environments</li>
                 <li>Designed and trained ResNet50-based image classification model for study behavior recognition</li>
                 <li>Built study time tracking system using OpenCV and Flask, deployed as web service</li>
               </ul>
             </div>
-            <div class="timeline-item">
-              <p class="item-period">2021.03 – 2021.06</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-period">2021.03 –<br />2021.06</p>
+            <div class="tl-body">
               <h3>Organizational Culture Analysis Using HR Data</h3>
-              <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+              <ul class="detail-list">
                 <li>Integrated financial and HR data to build company-level analysis datasets</li>
                 <li>Developed organizational culture indicators using Korean text dictionary and sentiment scores</li>
                 <li>Implemented organizational culture diagnosis system through clustering and visualization</li>
               </ul>
             </div>
-            <div class="timeline-item">
-              <p class="item-period">2021.03 – 2021.04</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-period">2021.03 –<br />2021.04</p>
+            <div class="tl-body">
               <h3>Amazon Customer Satisfaction Analysis and Improvement Strategy Proposal</h3>
-              <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+              <ul class="detail-list">
                 <li>Analyzed customer characteristics and designed satisfaction-related hypotheses using Singapore e-commerce data</li>
                 <li>Identified key variables significantly affecting satisfaction through multiple regression modeling</li>
                 <li>Substantiated delivery, product, and platform UX issues with data and proposed improvement strategies</li>
               </ul>
             </div>
-            <div class="timeline-item">
-              <p class="item-period">2021.09 – 2021.12</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-period">2021.09 –<br />2021.12</p>
+            <div class="tl-body">
               <h3>Mobility Data Analysis for Public Bicycle Service Optimization</h3>
-              <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+              <ul class="detail-list">
                 <li>Collected and integrated mobility data using Google and Mapbox APIs with H3 spatial indexing</li>
                 <li>Identified underutilized areas by analyzing spatial usage against demand potential</li>
                 <li>Proposed data-driven demand activation and service optimization strategies</li>
               </ul>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Awards Section -->
-        <section id="awards" class="panel reveal">
-          <div class="section-heading">
-            <h2>Awards & Scholarships</h2>
-          </div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <p class="item-period">2023</p>
+      <section id="awards" class="section">
+        <div class="section-label"><h2>Awards &amp; Scholarships</h2></div>
+        <div class="section-body">
+          <div class="tl-item">
+            <p class="tl-period">2023</p>
+            <div class="tl-body">
               <h3>AI Program Hackathon 1st Place</h3>
               <p>CJ OliveNetworks</p>
             </div>
-            <div class="timeline-item">
-              <p class="item-period">2021</p>
-              <h3>Big Contest Award of Excellence <span class="card-meta" style="font-size: 0.85rem;">(Innovation Track)</span></h3>
+          </div>
+          <div class="tl-item">
+            <p class="tl-period">2021</p>
+            <div class="tl-body">
+              <h3>Big Contest Award of Excellence <span class="meta-inline">(Innovation Track)</span></h3>
               <p>Korea Information and Communication Technology Association (KAIT)</p>
             </div>
-            <div class="timeline-item">
-              <p class="item-period">2021–2022</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-period">2021–2022</p>
+            <div class="tl-body">
               <h3>Humanities Centennial Scholarship Recipient</h3>
               <p>Korean Scholarship Foundation</p>
             </div>
-            <div class="timeline-item">
-              <p class="item-period">2020</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-period">2020</p>
+            <div class="tl-body">
               <h3>Academic Excellence Award</h3>
               <p>Sogang University</p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="panel reveal">
-          <div class="section-heading">
-            <h2>Technical Skills</h2>
+      <section id="skills" class="section">
+        <div class="section-label"><h2>Technical Skills</h2></div>
+        <div class="section-body">
+          <div class="tl-item" style="padding: 8px 0 30px;">
+            <p class="tl-period" style="font-weight: 600; color: var(--ink); font-size: 0.9rem;">Programming</p>
+            <div class="tl-body"><p>Python, C/C++, R</p></div>
           </div>
-          <div class="timeline">
-            <div class="skill-group">
-              <h3 style="color: var(--accent); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Programming</h3>
-              <p>Python, C/C++, R</p>
-            </div>
-            <div class="skill-group">
-              <h3 style="color: var(--accent); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">AI/ML</h3>
-              <p>PyTorch, Transformers, TRL</p>
-            </div>
-            <div class="skill-group">
-              <h3 style="color: var(--accent); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Databases</h3>
-              <p>MySQL, PostgreSQL, Snowflake</p>
-            </div>
-            <div class="skill-group">
-              <h3 style="color: var(--accent); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Certifications</h3>
-              <p>ADsP (2022), SQLD (2021)</p>
-            </div>
-            <div class="skill-group">
-              <h3 style="color: var(--accent); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Relevant Coursework</h3>
-              <p>Machine Learning & Deep Learning, Big Data & Knowledge Management Systems, Data Structures & Algorithms, Conversational AI, Internal Mechanisms of Language Models</p>
-            </div>
-            <div class="skill-group">
-              <h3 style="color: var(--accent); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Languages</h3>
-              <p>Korean (Native), English (TOEIC Speaking Advanced Low, 2025)</p>
-            </div>
+          <div class="tl-item" style="padding: 30px 0;">
+            <p class="tl-period" style="font-weight: 600; color: var(--ink); font-size: 0.9rem;">AI/ML</p>
+            <div class="tl-body"><p>PyTorch, Transformers, TRL</p></div>
           </div>
-        </section>
-      </div>
-    </main>
+          <div class="tl-item" style="padding: 30px 0;">
+            <p class="tl-period" style="font-weight: 600; color: var(--ink); font-size: 0.9rem;">Databases</p>
+            <div class="tl-body"><p>MySQL, PostgreSQL, Snowflake</p></div>
+          </div>
+          <div class="tl-item" style="padding: 30px 0;">
+            <p class="tl-period" style="font-weight: 600; color: var(--ink); font-size: 0.9rem;">Certifications</p>
+            <div class="tl-body"><p>ADsP (2022), SQLD (2021)</p></div>
+          </div>
+          <div class="tl-item" style="padding: 30px 0;">
+            <p class="tl-period" style="font-weight: 600; color: var(--ink); font-size: 0.9rem;">Relevant Coursework</p>
+            <div class="tl-body"><p>Machine Learning &amp; Deep Learning, Big Data &amp; Knowledge Management Systems, Data Structures &amp; Algorithms, Conversational AI, Internal Mechanisms of Language Models</p></div>
+          </div>
+          <div class="tl-item" style="padding: 30px 0 0;">
+            <p class="tl-period" style="font-weight: 600; color: var(--ink); font-size: 0.9rem;">Languages</p>
+            <div class="tl-body"><p>Korean (Native), English (TOEIC Speaking Advanced Low, 2025)</p></div>
+          </div>
+        </div>
+      </section>
 
-    <script src="script.js"></script>
+      <footer class="footer">
+        <span>© 2026 Chaewon Heo</span>
+      </footer>
+    </div>
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.07 }
+      );
+
+      document.querySelectorAll(".section").forEach((section) => {
+        section.classList.add("will-animate");
+        observer.observe(section);
+      });
+
+      const links = document.querySelectorAll(".topbar-links a");
+      const sections = document.querySelectorAll("section[id]");
+
+      window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((section) => {
+          if (window.scrollY >= section.offsetTop - 70) {
+            current = section.id;
+          }
+        });
+
+        links.forEach((link) => {
+          link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
+        });
+      });
+    </script>
   </body>
 </html>
