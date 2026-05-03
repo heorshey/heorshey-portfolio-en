@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chaewon Heo | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Noto+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <div class="hero reveal">
+        <div class="hero-orb hero-orb-a"></div>
+        <div class="hero-orb hero-orb-b"></div>
+        
+        <div class="topbar">
+          <span class="brand">Chaewon Heo</span>
+          <nav class="nav-links">
+            <a href="#education">Education</a>
+            <a href="#publications">Publications</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#awards">Awards</a>
+            <a href="#skills">Skills</a>
+          </nav>
+          <div class="lang-switcher">
+            <a href="/chaewonheo-portfolio/index.html">한국어</a>
+            <a href="#" class="active">English</a>
+          </div>
+        </div>
+
+        <div class="hero-content">
+          <div class="hero-copy">
+            <div class="profile-ring">
+              <div class="profile-photo">
+                <img src="me.png" alt="Chaewon Heo" />
+              </div>
+            </div>
+            <h1>Chaewon Heo</h1>
+            <p class="headline">Data Science Researcher | LLM Engineer</p>
+            <p class="subheadline">
+              I love understanding problems with data and building AI systems to solve them.<br />
+              I'm fascinated by how context extracted from data flows into models and pipelines.
+            </p>
+            <div class="tag-list">
+              <span>Large Language Models</span>
+              <span>Conversational AI</span>
+              <span>LLM Evaluation & Alignment</span>
+              <span>AI Agents</span>
+            </div>
+            <div class="contact-strip">
+              <a href="mailto:heorshey99@gmail.com">heorshey99@gmail.com</a>
+              <span>|</span>
+              <span>+82 10-8476-0626</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <!-- Education Section -->
+        <section id="education" class="panel reveal">
+          <div class="section-heading">
+            <h2>Education</h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <p class="item-period">2024.03 – 2026.08</p>
+              <h3>Seoul National University Graduate School of Data Science</h3>
+              <p>M.S. in Data Science</p>
+              <p>Advisor: Yohan Jo | GPA 3.84 / 4.3 (95.4 / 100)</p>
+            </div>
+            <div class="timeline-item">
+              <p class="item-period">2018.03 – 2024.02</p>
+              <h3>Sogang University</h3>
+              <p>B.A. in Psychology, Cultural Information Management</p>
+              <p>GPA 4.03 / 4.3 (97.9 / 100)</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="panel reveal">
+          <div class="section-heading">
+            <h2>Publications</h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <p class="item-period">Accepted at<br />ACL 2026 Findings</p>
+              <h3>
+                <a
+                  href="https://arxiv.org/pdf/2601.07698"
+                  target="_blank"
+                  rel="noreferrer"
+                  style="text-decoration: underline; text-underline-offset: 3px;"
+                >
+                  Emotional Support Evaluation Framework via Controllable and Diverse Seeker Simulator
+                </a>
+              </h3>
+              <p style="margin-bottom: 8px;">Chaewon Heo, Cheyon Jin, Yohan Jo</p>
+              <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+                <li>Built automated evaluation framework for counseling LLMs using user simulator to address lack of evaluation systems</li>
+                <li>Established systematic framework of 9 psychological & linguistic features for user characterization</li>
+                <li>Developed automatic feature tagging pipeline using OpenAI API (achieved 80% tagging accuracy compared to human annotation)</li>
+                <li>Constructed end-to-end simulator evaluation pipeline: conversation generation → feature re-tagging → F1-based accuracy measurement</li>
+                <li>Designed Mixture-of-Experts based simulator for improved profile reproduction (performance improvement across all features vs. SFT baseline)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="panel reveal">
+          <div class="section-heading">
+            <h2>Experience</h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <p class="item-period">2024.01 – 2024.03,<br />2024.07 – 2024.08</p>
+              <h3>Desilo</h3>
+              <p class="card-meta">Business Analytics Team · Seoul</p>
+              <div style="margin-top: 12px;">
+                <p style="font-weight: 500; margin-bottom: 6px;">Data Analysis & Prospective Customer Data Utilization Scenarios</p>
+                <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+                  <li>Direct aggregation and analysis of financial and business data using SQL</li>
+                  <li>Created customized data utilization scenarios by prospective customer type (government, local government, research institutions)</li>
+                  <li>Synthesized analysis results into narrative stories and created sales proposals tailored to customer segments</li>
+                </ul>
+              </div>
+              <div style="margin-top: 14px;">
+                <p style="font-weight: 500; margin-bottom: 6px;">Dashboard Database Construction for Investment Client Analysis</p>
+                <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+                  <li>Defined dashboard metrics based on analytical objectives</li>
+                  <li>Identified MyData sources and designed indicator-to-data mapping and schema</li>
+                  <li>Built SQL-based Snowflake tables and implemented metric aggregation</li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <p class="item-period">2023.06 – 2023.07</p>
+              <h3>VIP Lab</h3>
+              <p class="card-meta">Google ExploreCSR Program · Seoul National University</p>
+              <ul style="margin: 12px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+                <li>Research support for content-based sequential recommender systems</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <p class="item-period">2021.03 – 2022.02</p>
+              <h3>Insight</h3>
+              <p class="card-meta">Sogang University Data Science Club</p>
+              <ul style="margin: 12px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+                <li>Executed full project lifecycle from data collection and preprocessing through ML modeling and insight generation</li>
+                <li>Worked with diverse data types including text, numerical, image, and spatial data</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="panel reveal">
+          <div class="section-heading">
+            <h2>Projects</h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <p class="item-period">2025.09 – 2025.12</p>
+              <h3>LLM Agent-Based Automated Startup Evaluation Report Generation System</h3>
+              <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+                <li>Designed Planner-Executor structured LLM agent framework and implemented iterative refinement pipeline</li>
+                <li>Implemented context-aware information retrieval using ChromaDB and FAISS-based RAG integration</li>
+                <li>Achieved stable report generation through adaptive query strategies</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <p class="item-period">2024.09 – 2024.12</p>
+              <h3>Analyzing Performance Bottlenecks and Data Augmentation for Emotional Support LLM</h3>
+              <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+                <li>Detected performance degradation patterns through metric-based automated evaluation of LLM-generated conversations</li>
+                <li>Achieved full-dataset-level performance with just 17% of data through Active Learning and synthetic data generation</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <p class="item-period">2023.03 – 2023.06</p>
+              <h3>Vision-Based Study Time Tracking Service</h3>
+              <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+                <li>Collected and labeled custom video dataset from YouTube covering diverse poses and environments</li>
+                <li>Designed and trained ResNet50-based image classification model for study behavior recognition</li>
+                <li>Built study time tracking system using OpenCV and Flask, deployed as web service</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <p class="item-period">2021.03 – 2021.06</p>
+              <h3>Organizational Culture Analysis Using HR Data</h3>
+              <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+                <li>Integrated financial and HR data to build company-level analysis datasets</li>
+                <li>Developed organizational culture indicators using Korean text dictionary and sentiment scores</li>
+                <li>Implemented organizational culture diagnosis system through clustering and visualization</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <p class="item-period">2021.03 – 2021.04</p>
+              <h3>Amazon Customer Satisfaction Analysis and Improvement Strategy Proposal</h3>
+              <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+                <li>Analyzed customer characteristics and designed satisfaction-related hypotheses using Singapore e-commerce data</li>
+                <li>Identified key variables significantly affecting satisfaction through multiple regression modeling</li>
+                <li>Substantiated delivery, product, and platform UX issues with data and proposed improvement strategies</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <p class="item-period">2021.09 – 2021.12</p>
+              <h3>Mobility Data Analysis for Public Bicycle Service Optimization</h3>
+              <ul style="margin: 8px 0 0 1.1em; padding: 0; color: var(--muted); font-size: 0.9rem; font-weight: 400; line-height: 1.85;">
+                <li>Collected and integrated mobility data using Google and Mapbox APIs with H3 spatial indexing</li>
+                <li>Identified underutilized areas by analyzing spatial usage against demand potential</li>
+                <li>Proposed data-driven demand activation and service optimization strategies</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Awards Section -->
+        <section id="awards" class="panel reveal">
+          <div class="section-heading">
+            <h2>Awards & Scholarships</h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <p class="item-period">2023</p>
+              <h3>AI Program Hackathon 1st Place</h3>
+              <p>CJ OliveNetworks</p>
+            </div>
+            <div class="timeline-item">
+              <p class="item-period">2021</p>
+              <h3>Big Contest Award of Excellence <span class="card-meta" style="font-size: 0.85rem;">(Innovation Track)</span></h3>
+              <p>Korea Information and Communication Technology Association (KAIT)</p>
+            </div>
+            <div class="timeline-item">
+              <p class="item-period">2021–2022</p>
+              <h3>Humanities Centennial Scholarship Recipient</h3>
+              <p>Korean Scholarship Foundation</p>
+            </div>
+            <div class="timeline-item">
+              <p class="item-period">2020</p>
+              <h3>Academic Excellence Award</h3>
+              <p>Sogang University</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="panel reveal">
+          <div class="section-heading">
+            <h2>Technical Skills</h2>
+          </div>
+          <div class="timeline">
+            <div class="skill-group">
+              <h3 style="color: var(--accent); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Programming</h3>
+              <p>Python, C/C++, R</p>
+            </div>
+            <div class="skill-group">
+              <h3 style="color: var(--accent); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">AI/ML</h3>
+              <p>PyTorch, Transformers, TRL</p>
+            </div>
+            <div class="skill-group">
+              <h3 style="color: var(--accent); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Databases</h3>
+              <p>MySQL, PostgreSQL, Snowflake</p>
+            </div>
+            <div class="skill-group">
+              <h3 style="color: var(--accent); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Certifications</h3>
+              <p>ADsP (2022), SQLD (2021)</p>
+            </div>
+            <div class="skill-group">
+              <h3 style="color: var(--accent); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Relevant Coursework</h3>
+              <p>Machine Learning & Deep Learning, Big Data & Knowledge Management Systems, Data Structures & Algorithms, Conversational AI, Internal Mechanisms of Language Models</p>
+            </div>
+            <div class="skill-group">
+              <h3 style="color: var(--accent); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Languages</h3>
+              <p>Korean (Native), English (TOEIC Speaking Advanced Low, 2025)</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
