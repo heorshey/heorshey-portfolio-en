@@ -2,7 +2,7 @@
 
 Personal portfolio website for Chaewon Heo - English Edition
 
-**Live Site**: https://heorshey-portfolio-en.github.io (coming soon)
+**Live Site**: https://heorshey.github.io/heorshey-portfolio-en/
 
 ## Overview
 
